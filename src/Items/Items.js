@@ -2,7 +2,10 @@ import { Link } from 'react-router-dom';
 import './Items.css'
 // import { GiTriforce } from "react-icons/gi";
 
-const Items = ({ data}) => {
+const Items = ({ data, foundItems}) => {
+    if (foundItems.length) {
+        data = foundItems
+    }
     return (
         data.map(({ id, name, image, category }) => {
             return (

@@ -15,7 +15,8 @@ class App extends Component {
       equipment: [],
       materials: [],
       monsters: [],
-      treasure: []
+      treasure: [],
+      foundItems: []
     }
   }
 
@@ -24,7 +25,6 @@ class App extends Component {
       .then(data => {
         const info = data.data
         this.setState({ creatures: [...info.creatures.food, ...info.creatures.non_food] , equipment: info.equipment, materials: info.materials, monsters: info.monsters, treasure: info.treasure })
-        console.log(info)
       })
       .catch(error => alert(error))
   }
@@ -45,6 +45,11 @@ class App extends Component {
     }
   }
 
+  findItems = (searchWord, category) => {
+    const foundItems = this.state[category].filter(item => item.name.includes(searchWord))
+    this.setState({ foundItems: foundItems })
+  }
+
   render() {
     return (
       <div className="App">
@@ -52,7 +57,12 @@ class App extends Component {
           <Route exact path='/' render={() => <HomePage/>}/>
           <Route exact path='/:category' render={({ match }) => {
             const { category } = match.params;
-            return <div><SearchBar data={this.listItems(category)} findItem={this.findItem}/><Items data={this.listItems(category)} /></div>}
+            return (
+              <div>
+                <SearchBar findItems={this.findItems} data={this.listItems(category)} findItem={this.findItem} category={category}/>
+                <Items data={this.listItems(category)} foundItems={this.state.foundItems}/>
+              </div>
+            )}
           } />
           <Route exact path='/:category/:id' render={({ match }) => {
             const { id, category} = match.params;
