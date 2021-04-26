@@ -3,17 +3,13 @@ import { Component} from 'react';
 import { Route, Switch } from 'react-router-dom';
 import HomePage from '../HomePage/HomePage';
 import { checkResponse } from '../apiCalls.js';
-import Creatures from '../Creatures/Creatures';
-import Monsters from '../Monsters/Monsters';
-import Treasure from '../Treasure/Treasure';
-import Materials from '../Materials/Materials';
-import Equipment from '../Equipment/Equipment';
+import Items from '../Items/Items';
 
 class App extends Component {
   constructor() {
     super()
     this.state = {
-      creatures: { food: [], nonFood: [] },
+      creatures: [],
       equipment: [],
       materials: [],
       monsters: [],
@@ -26,9 +22,25 @@ class App extends Component {
       .then(checkResponse)
       .then(data => {
         const info = data.data
-        this.setState({ creatures: { food: info.creatures.food, nonFood: info.creatures.non_food }, equipment: info.equipment, materials: info.materials, monsters: info.monsters, treasure: info.treasure })
-        // console.log(this.state.monsters)
+        this.setState({ creatures: [...info.creatures.food, ...info.creatures.non_food] , equipment: info.equipment, materials: info.materials, monsters: info.monsters, treasure: info.treasure })
       })
+      .catch(error => alert(error))
+  }
+
+  listItems = (category) => {
+    switch (category) {
+      case 'creatures':
+        return this.state.creatures
+      case 'equipment':
+        return this.state.equipment
+      case 'materials':
+        return this.state.materials
+      case 'monsters':
+        return this.state.monsters
+      case 'treasure':
+        return this.state.treasure
+      default:
+    }
   }
 
   render() {
@@ -36,11 +48,10 @@ class App extends Component {
       <div className="App">
         <Switch>
           <Route exact path='/' render={() => <HomePage/>}/>
-          <Route exact path='/creatures' render={() => <Creatures food={this.state.creatures.food} nonFood={this.state.creatures.nonFood}/> }/>
-          <Route exact path= '/equipment' render={() => 'eq'} />
-          <Route exact path='/materials' render={() => 'mats'} />
-          <Route exact path='/monsters' render={() => <Monsters monsters={this.state.monsters}/>} />
-          <Route exact path='/treasure' render={() => 'treasure'} />
+          <Route exact path='/:category' render={({ match }) => {
+            const { category } = match.params;
+            return <Items data={this.listItems(category)}/>}
+          } />
         </Switch>
       </div>
     );
