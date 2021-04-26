@@ -9,11 +9,14 @@ const Items = ({ data, foundItems }) => {
     return (
         data.map(({ id, name, image, category }) => {
             return (
-                <Link to={`/${category}/${id}`} key={id}>
-                    <img src={image} alt='' />
-                    <p>{name}</p>
-                    {/* <GiTriforce/> */}
-                </Link>
+                <div key={id}>
+                    <Link to={`/${category}/${id}`}>
+                        <img src={image} alt='' />
+                        <p>{name}</p>
+                        {/* <GiTriforce/> */}
+                    </Link>
+                    <button>Favorite</button>
+                </div>
             )
         })
     )
