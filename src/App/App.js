@@ -1,8 +1,8 @@
 import './App.css';
 import { Component} from 'react';
-import { Link, Route, Switch } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import HomePage from '../HomePage/HomePage';
-import { checkResponse, getAllHyruleInfo } from '../apiCalls.js'
+import { checkResponse } from '../apiCalls.js'
 import Creatures from '../Creatures/Creatures'
 
 class App extends Component {
@@ -33,6 +33,10 @@ class App extends Component {
         <Switch>
           <Route exact path='/' render={() => <HomePage/>}/>
           <Route exact path='/creatures' render={() => <Creatures food={this.state.creatures.food} nonFood={this.state.creatures.nonFood}/> }/>
+          <Route exact path= '/equipment' render={() => 'eq'} />
+          <Route exact path='/materials' render={() => 'mats'} />
+          <Route exact path='/monsters' render={() => 'monsters'} />
+          <Route exact path='/treasure' render={() => 'treasure'} />
         </Switch>
       </div>
     );
