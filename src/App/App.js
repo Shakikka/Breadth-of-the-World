@@ -4,7 +4,8 @@ import { Route, Switch } from 'react-router-dom';
 import HomePage from '../HomePage/HomePage';
 import Items from '../Items/Items';
 import Item from '../Item/Item';
-import { getAllHyruleInfo } from '../apiCalls'
+import SearchBar from '../SearchBar/SearchBar';
+import { getAllHyruleInfo } from '../apiCalls';
 
 class App extends Component {
   constructor() {
@@ -51,7 +52,7 @@ class App extends Component {
           <Route exact path='/' render={() => <HomePage/>}/>
           <Route exact path='/:category' render={({ match }) => {
             const { category } = match.params;
-            return <Items data={this.listItems(category)}/>}
+            return <div><SearchBar data={this.listItems(category)} findItem={this.findItem}/><Items data={this.listItems(category)} /></div>}
           } />
           <Route exact path='/:category/:id' render={({ match }) => {
             const { id, category} = match.params;
