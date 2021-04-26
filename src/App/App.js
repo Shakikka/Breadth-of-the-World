@@ -4,6 +4,7 @@ import { Route, Switch } from 'react-router-dom';
 import HomePage from '../HomePage/HomePage';
 import { checkResponse } from '../apiCalls.js';
 import Items from '../Items/Items';
+import Item from '../Item/Item';
 
 class App extends Component {
   constructor() {
@@ -23,6 +24,7 @@ class App extends Component {
       .then(data => {
         const info = data.data
         this.setState({ creatures: [...info.creatures.food, ...info.creatures.non_food] , equipment: info.equipment, materials: info.materials, monsters: info.monsters, treasure: info.treasure })
+        console.log(info)
       })
       .catch(error => alert(error))
   }
@@ -42,7 +44,9 @@ class App extends Component {
       default:
     }
   }
-
+  
+  showItemDetails = (id, category) => listItems(category).find(item => item.id === parseInt(id))
+  
   render() {
     return (
       <div className="App">
@@ -52,6 +56,10 @@ class App extends Component {
             const { category } = match.params;
             return <Items data={this.listItems(category)}/>}
           } />
+          <Route exact path='/:category/:id' render={({ match }) => {
+            const { id, category} = match.params;
+            return <Item {...this.showItemDetails(id, category)}/>}}
+          />
         </Switch>
       </div>
     );
