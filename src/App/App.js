@@ -36,9 +36,9 @@ class App extends Component {
       <div className="App">
         <Switch>
           <Route exact path='/' render={() => <HomePage/>}/>
-          <Route exact path='/creatures' render={() => <Creatures food={this.state.creatures.food} nonFood={this.state.creatures.nonFood}/> }/>
-          <Route exact path= '/equipment' render={() => 'eq'} />
-          <Route exact path='/materials' render={() => 'mats'} />
+          <Route exact path='/creatures' render={() => <Creatures food={this.state.creatures.food} nonFood={this.state.creatures.nonFood}/>} />
+          <Route exact path= '/equipment' render={() => <Equipment equipment={this.state.equipment}/>} />
+          <Route exact path='/materials' render={() => <Materials materials={this.state.materials}/>} />
           <Route exact path='/monsters' render={() => <Monsters monsters={this.state.monsters}/>} />
           <Route exact path='/treasure' render={() => <Treasure treasure={this.state.treasure}/>} />
         </Switch>
