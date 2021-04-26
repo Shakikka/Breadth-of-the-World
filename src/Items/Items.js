@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import './Items.css'
 // import { GiTriforce } from "react-icons/gi";
 
-const Items = ({ data, foundItems }) => {
+const Items = ({ data, foundItems, favoriteItem }) => {
     if (foundItems.length) {
         data = foundItems
     }
@@ -15,7 +15,7 @@ const Items = ({ data, foundItems }) => {
                         <p>{name}</p>
                         {/* <GiTriforce/> */}
                     </Link>
-                    <button>Favorite</button>
+                    <button id={id} onClick={(e) => favoriteItem(e, data)}>Favorite</button>
                 </div>
             )
         })

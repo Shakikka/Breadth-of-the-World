@@ -52,8 +52,10 @@ class App extends Component {
     this.setState({ foundItems: foundItems })
   }
 
-  favoriteItem = (item) => {
-    this.setState({ favorites: [this.state.favorites, ...item]})
+  favoriteItem = (e, data) => {
+    const targetId = parseInt(e.target.id)
+    const foundItem = data.find(item => targetId === item.id)
+    this.setState({ favorites: [...this.state.favorites, foundItem]})
   }
 
   clearFoundItems = () => this.setState({ foundItems: '' })
@@ -71,7 +73,7 @@ class App extends Component {
                 <h2>{category}</h2>
                 <SearchBar findItems={this.findItems} clearFoundItems={this.clearFoundItems} data={this.listItems(category)}
                  findItem={this.findItem} category={category}/>
-                <Items data={this.listItems(category)} foundItems={this.state.foundItems}/>
+                <Items data={this.listItems(category)} foundItems={this.state.foundItems} favoriteItem={this.favoriteItem}/>
               </div>
             )}
           } />
