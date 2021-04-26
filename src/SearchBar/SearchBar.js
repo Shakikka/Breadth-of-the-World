@@ -11,17 +11,21 @@ class SearchBar extends Component {
     }
 
     handleChange = e => {
-        this.setState({ searchTerm: e.target.value})
+        this.setState({ searchTerm: e.target.value })
     }
-
-    handleSubmit = () => {
-        this.props.findItem(this.state.searchTerm)
+    
+    handleSubmit = e => {
+        e.preventDefault()
+        this.findItem(this.state.searchTerm)
         this.clearInput()
     }
 
-
     clearInput = () => {
         this.setState({ searchTerm: '' })
+    }
+
+    findItem = (searchWord) => {
+        return this.props.data.filter(item => item.name.includes(searchWord))
     }
 
     render() {
@@ -30,7 +34,7 @@ class SearchBar extends Component {
                 <input 
                     className='search'
                     type='text'
-                    placeholder={`Search for a ${this.props.data[0].category}`}
+                    placeholder={``}
                     id='searchTerm'
                     name='searchTerm'
                     value={this.state.searchTerm}
