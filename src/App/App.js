@@ -54,8 +54,18 @@ class App extends Component {
 
   favoriteItem = (e, data) => {
     const targetId = parseInt(e.target.id)
-    const foundItem = data.find(item => targetId === item.id)
-    this.setState({ favorites: [...this.state.favorites, foundItem]})
+    const searchFavorites = this.state.favorites.find(favorite => favorite.id === targetId)
+    if (!searchFavorites) {
+      const foundItem = data.find(item => targetId === item.id)
+      this.setState({ favorites: [...this.state.favorites, foundItem]})
+    } else {
+      const itemToRemove = this.state.favorites.findIndex((favorite => favorite.id === targetId));
+      this.state.favorites.splice(itemToRemove, 1)
+    }
+  }
+
+  unfavoriteItem = e => {
+
   }
 
   clearFoundItems = () => this.setState({ foundItems: '' })
