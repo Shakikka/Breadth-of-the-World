@@ -16,7 +16,8 @@ class App extends Component {
       materials: [],
       monsters: [],
       treasure: [],
-      foundItems: []
+      foundItems: [],
+      favorites: []
     }
   }
 
@@ -48,6 +49,10 @@ class App extends Component {
   findItems = (e, category) => {
     const foundItems = this.state[category].filter(item => item.name.includes(e.target.value))
     this.setState({ foundItems: foundItems })
+  }
+
+  favoriteItem = (item) => {
+    this.setState({ favorites: [this.state.favorites, ...item]})
   }
 
   clearFoundItems = () => this.setState({ foundItems: '' })
