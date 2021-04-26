@@ -61,6 +61,7 @@ class App extends Component {
     } else {
       const itemToRemove = this.state.favorites.findIndex((favorite => favorite.id === targetId));
       this.state.favorites.splice(itemToRemove, 1)
+      this.setState({ favorites: [...this.state.favorites]})
     }
   }
 

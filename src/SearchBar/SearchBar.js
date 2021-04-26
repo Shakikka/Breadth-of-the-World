@@ -9,8 +9,6 @@ class SearchBar extends Component {
         }
     }
     
-    
-    
     handleChange = e => {
         this.setState({ searchTerm: e.target.value })
         this.props.findItems(e, this.props.category)
