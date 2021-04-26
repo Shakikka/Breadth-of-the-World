@@ -14,7 +14,7 @@ class App extends Component {
   constructor() {
     super()
     this.state = {
-      creatures: { food: [], nonFood: [] },
+      creatures: [],
       equipment: [],
       materials: [],
       monsters: [],
@@ -27,7 +27,7 @@ class App extends Component {
       .then(checkResponse)
       .then(data => {
         const info = data.data
-        this.setState({ creatures: { food: info.creatures.food, nonFood: info.creatures.non_food }, equipment: info.equipment, materials: info.materials, monsters: info.monsters, treasure: info.treasure })
+        this.setState({ creatures: [...info.creatures.food, ...info.creatures.non_food] , equipment: info.equipment, materials: info.materials, monsters: info.monsters, treasure: info.treasure })
         console.log(data.data)
       })
   }
