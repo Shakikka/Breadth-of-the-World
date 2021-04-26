@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-const Favorites = ({ favorites }) => {
+const Favorites = ({ favorites, favoriteItem }) => {
     return (
         <div>
             <h2>Favorites</h2>
@@ -9,13 +9,13 @@ const Favorites = ({ favorites }) => {
             </Link>
             {favorites.map(({ id, name, image, category}) => {
             return (
-                <div>
-                    <Link to={`/${category}/${id}`} key={id}>
+                <div key={id}>
+                    <Link to={`/${category}/${id}`}>
                         <img src={image} alt='' />
                         <p>{name}</p>
                         {/* <GiTriforce/> */}
                     </Link>
-                    <button>unfavorite</button>
+                    <button id={id} onClick={(e) => favoriteItem(e, category)}>unfavorite</button>
                 </div>
             )
         })}

@@ -15,7 +15,7 @@ const Items = ({ data, foundItems, favoriteItem }) => {
                         <p>{name}</p>
                         {/* <GiTriforce/> */}
                     </Link>
-                    <button id={id} onClick={(e) => favoriteItem(e, data)}>Favorite</button>
+                    <button id={id} onClick={(e) => favoriteItem(e, category)}>Favorite</button>
                 </div>
             )
         })

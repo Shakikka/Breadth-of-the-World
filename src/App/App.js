@@ -52,20 +52,16 @@ class App extends Component {
     this.setState({ foundItems: foundItems })
   }
 
-  favoriteItem = (e, data) => {
+  favoriteItem = (e, category) => {
     const targetId = parseInt(e.target.id)
     const searchFavorites = this.state.favorites.find(favorite => favorite.id === targetId)
     if (!searchFavorites) {
-      const foundItem = data.find(item => targetId === item.id)
+      const foundItem = this.state[category].find(item => targetId === item.id)
       this.setState({ favorites: [...this.state.favorites, foundItem]})
     } else {
       const itemToRemove = this.state.favorites.findIndex((favorite => favorite.id === targetId));
       this.state.favorites.splice(itemToRemove, 1)
     }
-  }
-
-  unfavoriteItem = e => {
-
   }
 
   clearFoundItems = () => this.setState({ foundItems: '' })
@@ -75,7 +71,7 @@ class App extends Component {
       <div className="App">
         <Switch>
           <Route exact path='/' render={() => <HomePage/>}/>
-          <Route exact path='/favorites' render={() => <Favorites favorites={this.state.favorites}/>}/>
+          <Route exact path='/favorites' render={() => <Favorites favorites={this.state.favorites} favoriteItem={this.favoriteItem}/>}/>
           <Route exact path='/:category' render={({ match }) => {
             const { category } = match.params;
             return (
