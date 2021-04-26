@@ -68,6 +68,7 @@ class App extends Component {
             const { category } = match.params;
             return (
               <div>
+                <h2>{category}</h2>
                 <SearchBar findItems={this.findItems} clearFoundItems={this.clearFoundItems} data={this.listItems(category)}
                  findItem={this.findItem} category={category}/>
                 <Items data={this.listItems(category)} foundItems={this.state.foundItems}/>

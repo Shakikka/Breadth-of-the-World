@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 const Favorites = ({ favorites }) => {
     return (
         <div>
+            <h2>Favorites</h2>
             {favorites.map(({ id, name, image, category}) => {
             return (
             <Link to={`/${category}/${id}`} key={id}>
