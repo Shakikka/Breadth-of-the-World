@@ -3,11 +3,6 @@ import { Component} from 'react';
 import { Route, Switch } from 'react-router-dom';
 import HomePage from '../HomePage/HomePage';
 import { checkResponse } from '../apiCalls.js';
-import Creatures from '../Creatures/Creatures';
-import Monsters from '../Monsters/Monsters';
-import Treasure from '../Treasure/Treasure';
-import Materials from '../Materials/Materials';
-import Equipment from '../Equipment/Equipment';
 import Items from '../Items/Items';
 
 class App extends Component {
