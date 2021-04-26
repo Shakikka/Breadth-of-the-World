@@ -44,9 +44,7 @@ class App extends Component {
       default:
     }
   }
-  
-  showItemDetails = (id, category) => listItems(category).find(item => item.id === parseInt(id))
-  
+
   render() {
     return (
       <div className="App">
@@ -58,7 +56,8 @@ class App extends Component {
           } />
           <Route exact path='/:category/:id' render={({ match }) => {
             const { id, category} = match.params;
-            return <Item {...this.showItemDetails(id, category)}/>}}
+            const showItemDetails = this.listItems(category).find(item => item.id === parseInt(id))
+            return <Item {...showItemDetails}/>}}
           />
         </Switch>
       </div>
