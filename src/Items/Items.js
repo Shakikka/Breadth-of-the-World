@@ -1,14 +1,18 @@
 import { Link } from 'react-router-dom';
 import './Items.css'
+// import { GiTriforce } from "react-icons/gi";
 
-const Items = ({ data}) => {
-    console.log(data)
+const Items = ({ data, foundItems }) => {
+    if (foundItems.length) {
+        data = foundItems
+    }
     return (
         data.map(({ id, name, image, category }) => {
             return (
-                <Link to={`/${category}/${name}`} key={id}>
+                <Link to={`/${category}/${id}`} key={id}>
                     <img src={image} alt='' />
                     <p>{name}</p>
+                    {/* <GiTriforce/> */}
                 </Link>
             )
         })

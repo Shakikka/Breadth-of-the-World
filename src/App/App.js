@@ -1,9 +1,11 @@
 import './App.css';
 import { Component} from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Link, Route, Switch } from 'react-router-dom';
 import HomePage from '../HomePage/HomePage';
-import { checkResponse } from '../apiCalls.js';
 import Items from '../Items/Items';
+import Item from '../Item/Item';
+import SearchBar from '../SearchBar/SearchBar';
+import { getAllHyruleInfo } from '../apiCalls';
 
 class App extends Component {
   constructor() {
@@ -13,13 +15,14 @@ class App extends Component {
       equipment: [],
       materials: [],
       monsters: [],
-      treasure: []
+      treasure: [],
+      foundItems: [],
+      favorites: []
     }
   }
 
     componentDidMount() {
-    fetch('https://botw-compendium.herokuapp.com/api/v2')
-      .then(checkResponse)
+      getAllHyruleInfo()
       .then(data => {
         const info = data.data
         this.setState({ creatures: [...info.creatures.food, ...info.creatures.non_food] , equipment: info.equipment, materials: info.materials, monsters: info.monsters, treasure: info.treasure })
@@ -43,6 +46,17 @@ class App extends Component {
     }
   }
 
+  findItems = (e, category) => {
+    const foundItems = this.state[category].filter(item => item.name.includes(e.target.value))
+    this.setState({ foundItems: foundItems })
+  }
+
+  favoriteItem = (item) => {
+    this.setState({ favorites: [this.state.favorites, ...item]})
+  }
+
+  clearFoundItems = () => this.setState({ foundItems: '' })
+
   render() {
     return (
       <div className="App">
@@ -50,8 +64,24 @@ class App extends Component {
           <Route exact path='/' render={() => <HomePage/>}/>
           <Route exact path='/:category' render={({ match }) => {
             const { category } = match.params;
-            return <Items data={this.listItems(category)}/>}
+            return (
+              <div>
+                <SearchBar findItems={this.findItems} clearFoundItems={this.clearFoundItems} data={this.listItems(category)}
+                 findItem={this.findItem} category={category}/>
+                <Items data={this.listItems(category)} foundItems={this.state.foundItems}/>
+              </div>
+            )}
           } />
+          <Route exact path='/:category/:id' render={({ match }) => {
+            const { id, category} = match.params;
+            const showItemDetails = this.listItems(category).find(item => item.id === parseInt(id))
+            return <Item clearFoundItems={this.clearFoundItems} {...showItemDetails}/>}}
+          />
+          <Route render={() => {
+              <Link to='/'>
+                <h1>You must be lost. Please click here to find your way.</h1>
+              </Link>
+          }}/>
         </Switch>
       </div>
     );
