@@ -1,11 +1,14 @@
 import { Link } from 'react-router-dom';
 
 const Item = ({ category, common_locations, cooking_effect, description, hearts_recovered, image, name, drops, attack, defense,  }) => {
-        console.log('hearts', drops)
+    console.log(image)
     return (
         <div>
             <Link to={`/${category}`}>
                 <button>Back</button>
+            </Link>
+            <Link to={`/`}>
+                <button>Home</button>
             </Link>
             <img src={image} alt=''/>
             <p>{name}</p>
