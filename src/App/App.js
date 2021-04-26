@@ -54,13 +54,12 @@ class App extends Component {
 
   favoriteItem = (e, category) => {
     const targetId = parseInt(e.target.id)
-    const searchFavorites = this.state.favorites.find(favorite => favorite.id === targetId)
-    if (!searchFavorites) {
+    const searchFavorites = this.state.favorites.findIndex(favorite => favorite.id === targetId)
+    if (searchFavorites === -1) {
       const foundItem = this.state[category].find(item => targetId === item.id)
       this.setState({ favorites: [...this.state.favorites, foundItem]})
     } else {
-      const itemToRemove = this.state.favorites.findIndex((favorite => favorite.id === targetId));
-      this.state.favorites.splice(itemToRemove, 1)
+      this.state.favorites.splice(searchFavorites, 1)
       this.setState({ favorites: [...this.state.favorites]})
     }
   }
@@ -87,7 +86,7 @@ class App extends Component {
           <Route exact path='/:category/:id' render={({ match }) => {
             const { id, category} = match.params;
             const showItemDetails = this.listItems(category).find(item => item.id === parseInt(id))
-            return <Item clearFoundItems={this.clearFoundItems} {...showItemDetails}/>}}
+            return <Item favoriteItem={this.favoriteItem} clearFoundItems={this.clearFoundItems} {...showItemDetails}/>}}
           />
           <Route render={() => {
               <Link to='/'>

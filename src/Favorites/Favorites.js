@@ -13,7 +13,6 @@ const Favorites = ({ favorites, favoriteItem }) => {
                     <Link to={`/${category}/${id}`}>
                         <img src={image} alt='' />
                         <p>{name}</p>
-                        {/* <GiTriforce/> */}
                     </Link>
                     <button id={id} onClick={(e) => favoriteItem(e, category)}>unfavorite</button>
                 </div>
