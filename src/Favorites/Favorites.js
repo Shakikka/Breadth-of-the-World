@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 const Favorites = ({ favorites, favoriteItem }) => {
     return (
@@ -23,3 +24,8 @@ const Favorites = ({ favorites, favoriteItem }) => {
 }
 
 export default Favorites
+
+Favorites.propTypes = {
+    favorites: PropTypes.array,
+    favoriteItem: PropTypes.func
+}

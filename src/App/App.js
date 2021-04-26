@@ -48,8 +48,8 @@ class App extends Component {
   }
 
   findItems = (e, category) => {
-    const foundItems = this.state[category].filter(item => item.name.includes(e.target.value))
-    this.setState({ foundItems: foundItems })
+    const filteredItems = this.state[category].filter(item => item.name.includes(e.target.value))
+    this.setState({ foundItems: filteredItems })
   }
 
   favoriteItem = (e, category) => {
@@ -64,7 +64,7 @@ class App extends Component {
     }
   }
 
-  clearFoundItems = () => this.setState({ foundItems: '' })
+  clearFoundItems = () => this.setState({ foundItems: [] })
 
   render() {
     return (

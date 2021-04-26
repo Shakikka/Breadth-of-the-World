@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
-import './Items.css'
+import './Items.css';
+import PropTypes from 'prop-types';
 // import { GiTriforce } from "react-icons/gi";
 
 const Items = ({ data, foundItems, favoriteItem }) => {
@@ -23,3 +24,9 @@ const Items = ({ data, foundItems, favoriteItem }) => {
 }
 
 export default Items;
+
+Items.propTypes = {
+    data: PropTypes.array,
+    foundItems: PropTypes.array,
+    favoriteItem: PropTypes.func
+}
