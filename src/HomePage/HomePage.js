@@ -5,7 +5,7 @@ const HomePage = () => {
     
     return (
         <div>
-            <header>botw
+            <header>Breadth of the World
             </header>
             <div>
                 <Link to={'/creatures'}>

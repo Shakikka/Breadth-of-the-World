@@ -5,6 +5,7 @@ import HomePage from '../HomePage/HomePage';
 import Items from '../Items/Items';
 import Item from '../Item/Item';
 import SearchBar from '../SearchBar/SearchBar';
+import Favorites from '../Favorites/Favorites'
 import { getAllHyruleInfo } from '../apiCalls';
 
 class App extends Component {
@@ -62,6 +63,7 @@ class App extends Component {
       <div className="App">
         <Switch>
           <Route exact path='/' render={() => <HomePage/>}/>
+          <Route exact path='/favorites' render={() => <Favorites favorites={this.state.favorites}/>}/>
           <Route exact path='/:category' render={({ match }) => {
             const { category } = match.params;
             return (
