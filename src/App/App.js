@@ -1,6 +1,6 @@
 import './App.css';
 import { Component} from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Link, Route, Switch } from 'react-router-dom';
 import HomePage from '../HomePage/HomePage';
 import Items from '../Items/Items';
 import Item from '../Item/Item';
@@ -45,8 +45,8 @@ class App extends Component {
     }
   }
 
-  findItems = (searchWord, category) => {
-    const foundItems = this.state[category].filter(item => item.name.includes(searchWord))
+  findItems = (e, category) => {
+    const foundItems = this.state[category].filter(item => item.name.includes(e.target.value))
     this.setState({ foundItems: foundItems })
   }
 
@@ -69,6 +69,11 @@ class App extends Component {
             const showItemDetails = this.listItems(category).find(item => item.id === parseInt(id))
             return <Item {...showItemDetails}/>}}
           />
+          <Route render={() => {
+              <Link to='/'>
+                <h1>You must be lost. Please click here to find your way.</h1>
+              </Link>
+          }}/>
         </Switch>
       </div>
     );

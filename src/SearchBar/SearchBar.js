@@ -7,14 +7,13 @@ class SearchBar extends Component {
         this.state = {
             searchTerm: ''
         }
-        console.log(this.props.category)
     }
     
     
     
     handleChange = e => {
-        this.props.findItems(this.state.searchTerm, this.props.category)
         this.setState({ searchTerm: e.target.value })
+        this.props.findItems(e, this.props.category)
     }
     
     handleSubmit = e => {
