@@ -40,7 +40,7 @@ class App extends Component {
           <Route exact path= '/equipment' render={() => 'eq'} />
           <Route exact path='/materials' render={() => 'mats'} />
           <Route exact path='/monsters' render={() => <Monsters monsters={this.state.monsters}/>} />
-          <Route exact path='/treasure' render={() => 'treasure'} />
+          <Route exact path='/treasure' render={() => <Treasure treasure={this.state.treasure}/>} />
         </Switch>
       </div>
     );
