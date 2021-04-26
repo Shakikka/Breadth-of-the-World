@@ -23,6 +23,9 @@ const HomePage = () => {
                 <Link to={'/treasure'}>
                     <button>Treasure</button>
                 </Link>
+                <Link to={'/favorites'}>
+                    <button>Favorites</button>
+                </Link>
             </div>
         </div>
     )
