@@ -2,8 +2,12 @@ import './App.css';
 import { Component} from 'react';
 import { Route, Switch } from 'react-router-dom';
 import HomePage from '../HomePage/HomePage';
-import { checkResponse } from '../apiCalls.js'
-import Creatures from '../Creatures/Creatures'
+import { checkResponse } from '../apiCalls.js';
+import Creatures from '../Creatures/Creatures';
+import Monsters from '../Monsters/Monsters';
+import Treasure from '../Treasure/Treasure';
+import Materials from '../Materials/Materials';
+import Equipment from '../Equipment/Equipment';
 
 class App extends Component {
   constructor() {
@@ -23,7 +27,7 @@ class App extends Component {
       .then(data => {
         const info = data.data
         this.setState({ creatures: { food: info.creatures.food, nonFood: info.creatures.non_food }, equipment: info.equipment, materials: info.materials, monsters: info.monsters, treasure: info.treasure })
-        console.log(this.state.creatures.food)
+        // console.log(this.state.monsters)
       })
   }
 
@@ -35,7 +39,7 @@ class App extends Component {
           <Route exact path='/creatures' render={() => <Creatures food={this.state.creatures.food} nonFood={this.state.creatures.nonFood}/> }/>
           <Route exact path= '/equipment' render={() => 'eq'} />
           <Route exact path='/materials' render={() => 'mats'} />
-          <Route exact path='/monsters' render={() => 'monsters'} />
+          <Route exact path='/monsters' render={() => <Monsters monsters={this.state.monsters}/>} />
           <Route exact path='/treasure' render={() => 'treasure'} />
         </Switch>
       </div>
