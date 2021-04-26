@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 
 const Item = ({ category, common_locations, cooking_effect, description, hearts_recovered, image, name, drops, attack, defense,  }) => {
-        console.log('hearts', hearts_recovered)
+        console.log('hearts', drops)
     return (
         <div>
             <Link to={`/${category}`}>
@@ -10,8 +10,9 @@ const Item = ({ category, common_locations, cooking_effect, description, hearts_
             <img src={image} alt=''/>
             <p>{name}</p>
             <p>{description}</p>
-            <p>Can be found at: {common_locations}</p>
-            {category === 'equipment' && <div><p>Attack: {attack}</p><p>Defense: {defense}</p></div>}
+            {common_locations && <p>Can be found at: {common_locations}</p>}
+            {attack !== 0 && attack && <p>Attack: {attack}</p>}
+            {defense !== 0 && defense && <p>Defense: {defense}</p>}
             {drops && <p>Drops: {drops}</p>}
             {cooking_effect && <p>Cooking Effects: {cooking_effect}</p>}
             {hearts_recovered !== 0 && hearts_recovered && <p>Hearts Restored: {hearts_recovered}</p>}
