@@ -2,9 +2,9 @@ import './App.css';
 import { Component} from 'react';
 import { Route, Switch } from 'react-router-dom';
 import HomePage from '../HomePage/HomePage';
-import { checkResponse } from '../apiCalls.js';
 import Items from '../Items/Items';
 import Item from '../Item/Item';
+import { getAllHyruleInfo } from '../apiCalls'
 
 class App extends Component {
   constructor() {
@@ -19,8 +19,7 @@ class App extends Component {
   }
 
     componentDidMount() {
-    fetch('https://botw-compendium.herokuapp.com/api/v2')
-      .then(checkResponse)
+      getAllHyruleInfo()
       .then(data => {
         const info = data.data
         this.setState({ creatures: [...info.creatures.food, ...info.creatures.non_food] , equipment: info.equipment, materials: info.materials, monsters: info.monsters, treasure: info.treasure })
