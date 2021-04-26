@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-const Item = ({ category, common_locations, cooking_effect, description, hearts_recovered, image, name, drops, attack, defense,  }) => {
+const Item = ({ category, common_locations, cooking_effect, description, hearts_recovered, image, name, drops, attack, defense, clearFoundItems }) => {
     console.log(image)
     return (
         <div>
@@ -8,7 +8,7 @@ const Item = ({ category, common_locations, cooking_effect, description, hearts_
                 <button>Back</button>
             </Link>
             <Link to={`/`}>
-                <button>Home</button>
+                <button onClick={clearFoundItems}>Home</button>
             </Link>
             <img src={image} alt=''/>
             <p>{name}</p>

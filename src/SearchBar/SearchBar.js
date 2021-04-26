@@ -39,7 +39,7 @@ class SearchBar extends Component {
                 />
                 <button onClick={this.handleSubmit}>Search</button>
                 <Link to='/'>
-                    <button>Home</button>
+                    <button onClick={this.props.clearFoundItems}>Home</button>
                 </Link>
             </form>
         )

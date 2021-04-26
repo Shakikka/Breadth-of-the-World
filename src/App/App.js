@@ -50,6 +50,8 @@ class App extends Component {
     this.setState({ foundItems: foundItems })
   }
 
+  clearFoundItems = () => this.setState({ foundItems: '' })
+
   render() {
     return (
       <div className="App">
@@ -59,7 +61,8 @@ class App extends Component {
             const { category } = match.params;
             return (
               <div>
-                <SearchBar findItems={this.findItems} data={this.listItems(category)} findItem={this.findItem} category={category}/>
+                <SearchBar findItems={this.findItems} clearFoundItems={this.clearFoundItems} data={this.listItems(category)}
+                 findItem={this.findItem} category={category}/>
                 <Items data={this.listItems(category)} foundItems={this.state.foundItems}/>
               </div>
             )}
@@ -67,7 +70,7 @@ class App extends Component {
           <Route exact path='/:category/:id' render={({ match }) => {
             const { id, category} = match.params;
             const showItemDetails = this.listItems(category).find(item => item.id === parseInt(id))
-            return <Item {...showItemDetails}/>}}
+            return <Item clearFoundItems={this.clearFoundItems} {...showItemDetails}/>}}
           />
           <Route render={() => {
               <Link to='/'>
