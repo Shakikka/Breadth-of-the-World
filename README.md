@@ -30,6 +30,7 @@
 * Javacript
 * CSS
 * Webpack
+* [Hyrule Compendium API](https://github.com/gadhagod/Hyrule-Compendium-API)
 * [React](https://reactjs.org/)
 * [React Router](https://reactrouter.com/)
 * [Cypress](https://www.cypress.io/)
