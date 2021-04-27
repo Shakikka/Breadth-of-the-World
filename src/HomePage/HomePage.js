@@ -10,22 +10,22 @@ const HomePage = () => {
             </header>
             <div>
                 <Link to={'/creatures'}>
-                    <button>Creatures</button>
+                    <button className='crtr-btn'>Creatures</button>
                 </Link>
                 <Link to={'/equipment'}>
-                <button>Equipment</button>
+                <button className='eq-btn'>Equipment</button>
                 </Link>
                 <Link to={'/materials'}>
-                    <button>Materials</button>
+                    <button className='mat-btn'>Materials</button>
                 </Link>
                 <Link to={'/monsters'}>
-                    <button>Monsters</button>
+                    <button className='mon-btn'>Monsters</button>
                 </Link>
                 <Link to={'/treasure'}>
-                    <button>Treasure</button>
+                    <button className='trsr-btn'>Treasure</button>
                 </Link>
                 <Link to={'/favorites'}>
-                    <button>Favorites</button>
+                    <button className='fv-btn'>Favorites</button>
                 </Link>
             </div>
         </div>
