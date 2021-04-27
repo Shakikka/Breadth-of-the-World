@@ -39,7 +39,7 @@
   * Clone down the repo through the command line
   * Run `$npm install` to install dependencies
   * Run `$npm start` to open the page on a local browser
-* Otherwise the site is deployed onto heroku and is accessible [here]() 
+* Otherwise the site is deployed onto heroku and is accessible [here](https://breadth-of-the-world.herokuapp.com/) 
 
 ## Running Tests:
 * After completing the setup steps above:
