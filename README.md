@@ -20,11 +20,10 @@
   * Favorite items/creatures for quick reference
 
 ### Screenshots / Screen Recordings
-#### Home Screen:
-<img src=''/>
+#### Site use:
+<img src='./src/zelda-giph-1.gif'/>
 
-#### Search Page:
-<img src=''/>
+<img src='./src/zelda-giph-2.gif'/>
 
 ### Technologies Used:
 * Javacript

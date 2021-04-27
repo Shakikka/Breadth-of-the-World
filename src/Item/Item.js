@@ -1,10 +1,11 @@
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import './Item.css'
 
 const Item = ({ id, category, common_locations, cooking_effect, description, hearts_recovered, image, name, drops, attack, defense, clearFoundItems, favoriteItem }) => {
  
     return (
-        <div>
+        <div className='items-container'>
             <Link to={`/${category}`}>
                 <button className='back-btn'>Back</button>
             </Link>
