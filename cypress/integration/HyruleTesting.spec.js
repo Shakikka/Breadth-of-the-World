@@ -40,7 +40,7 @@ describe('Breadth of the World homepage functionality', () => {
     })
 })
 
-describe('Creature experience', () => {
+describe.only('Creature experience', () => {
     beforeEach(() => {
         cy.fixture('get-items-data.json').then((itemInfo => {
             cy.intercept('https://botw-compendium.herokuapp.com/api/v2', itemInfo[0])
@@ -48,7 +48,28 @@ describe('Creature experience', () => {
         cy.visit('http://localhost:3000/creatures')
     })
 
-    it.only('should have a creature with a name', () => {
+    it('should have a creature with a name', () => {
+        cy.get('p').contains('armored')
+    })
 
+    it('should click to show creature details', () => {
+        cy.get('p').first().click()
+        cy.get('p').contains('Cooking Effects: defense up')
+    })
+
+    it('should have a home button that takes you back to the home page', () => {
+        cy.get('p').first().click()
+        cy.get('p').contains('Cooking Effects: defense up')
+        cy.get('.home-btn').click()
+        cy.url('eq', 'http://localhost:3000/')
+    })
+})
+
+describe.only('Materials experience', () => {
+    beforeEach(() => {
+        cy.fixture('get-items-data.json').then((itemInfo => {
+            cy.intercept('https://botw-compendium.herokuapp.com/api/v2', itemInfo[0])
+        }))
+        cy.visit('http://localhost:3000/creatures')
     })
 })

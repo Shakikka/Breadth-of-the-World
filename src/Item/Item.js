@@ -9,7 +9,7 @@ const Item = ({ id, category, common_locations, cooking_effect, description, hea
                 <button>Back</button>
             </Link>
             <Link to={`/`}>
-                <button onClick={clearFoundItems}>Home</button>
+                <button className='home-btn' onClick={clearFoundItems}>Home</button>
             </Link>
             <img src={image} alt=''/>
             <p>{name}</p>
