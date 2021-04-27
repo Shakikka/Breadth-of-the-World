@@ -24,7 +24,8 @@ class App extends Component {
 
     componentDidMount() {
       getAllHyruleInfo()
-      .then(data => {
+      .then(data => { 
+        console.log('data', data)
         const info = data.data
         this.setState({ creatures: [...info.creatures.food, ...info.creatures.non_food] , equipment: info.equipment, materials: info.materials, monsters: info.monsters, treasure: info.treasure })
         console.log(info)

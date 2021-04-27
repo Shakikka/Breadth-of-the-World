@@ -1,66 +1,98 @@
-[
-    {
-        "category": "creatures",
-        "common_locations": ["Lanayru Great Springs", "East Necluda"],
-        "cooking_effect": "defense up",
-        "description": "v good",
-        "hearts_recovered": 1,
-        "id": 57,
-        "image": "https://botw-compendium.herokuapp.com/api/v2/entry/armored_carp/image",
-        "name": "armored carp"
-    },
-    {
-        "attack": 16,
-        "category": "equipment",
-        "common_locations": [
-            "East Necluda",
-            "Hyrule Field"
-        ],
-        "defense": 0,
-        "description": "A farming tool primarily used for tilling fields. Its fine craftsmanship is sturdy enough to withstand backbreaking fieldwork, but its battle applications are untested.",
-        "id": 248,
-        "image": "https://botw-compendium.herokuapp.com/api/v2/entry/farming_hoe/image",
-        "name": "farming hoe"
-    },
-    {
-        "category": "materials",
-        "common_locations": [
-            "Gerudo Desert",
-            "Tabantha Frontier"
-        ],
-        "cooking_effect": "cold resistance",
-        "description": "This pepper is exploding with spice. Cook with it to create dishes that will raise your body temperature and help you withstand the cold.",
-        "hearts_recovered": 0.5,
-        "id": 170,
-        "image": "https://botw-compendium.herokuapp.com/api/v2/entry/spicy_pepper/image",
-        "name": "spicy pepper"
-    },
-    {
-        "category": "monsters",
-        "common_locations": [
-            "Lanayru Great Spring",
-            "East Necluda"
-        ],
-        "description": "The electricity that engulfs the bodies of these bat-like Keese makes them more dangerous than the standard type. They're capable of shocking anything they touch.",
-        "drops": [
-            "electric keese wing",
-            "keese eyeball"
-        ],
-        "id": 91,
-        "image": "https://botw-compendium.herokuapp.com/api/v2/entry/electric_keese/image",
-        "name": "electric keese"
-    },
-    {
-        "category": "treasure",
-        "common_locations": [
-            "Greater Hyrule"
-        ],
-        "description": "Fortunes untold (potentially) await the lucky adventurer who finds one of these. Chests can often be found within shrines or at enemy camps, but there may be some crafty folks who think they're safer underground.",
-        "drops": [
-            "treasures"
-        ],
-        "id": 386,
-        "image": "https://botw-compendium.herokuapp.com/api/v2/entry/treasure_chest/image",
-        "name": "treasure chest"
-    }
-]
+
+       [{
+            "data": {
+                "creatures": {
+                    "food": [
+                        {
+                            "category": "creatures",
+                            "common_locations": [
+                                "Lanayru Great Springs",
+                                "East Necluda"
+                            ],
+                            "cooking_effect": "defense up",
+                            "description": "v good",
+                            "hearts_recovered": 1,
+                            "id": 57,
+                            "image": "https://botw-compendium.herokuapp.com/api/v2/entry/armored_carp/image",
+                            "name": "armored carp"
+                        }
+                    ],
+                    "non_food": [
+                        {
+                            "category": "creatures",
+                            "common_locations": [
+                                "Lanayru Great Springs",
+                                "East Necluda"
+                            ],
+                            "cooking_effect": "defense up",
+                            "description": "meow meow",
+                            "hearts_recovered": 1,
+                            "id": 59,
+                            "image": "https://botw-compendium.herokuapp.com/api/v2/entry/armored_carp/image",
+                            "name": "chubby checker"
+                        }
+                    ]
+                },
+                "equipment": [
+                {
+                    "attack": 16,
+                    "category": "equipment",
+                    "common_locations": [
+                        "East Necluda",
+                        "Hyrule Field"
+                    ],
+                    "defense": 0,
+                    "description": "A farming tool primarily used for tilling fields. Its fine craftsmanship is sturdy enough to withstand backbreaking fieldwork, but its battle applications are untested.",
+                    "id": 248,
+                    "image": "https://botw-compendium.herokuapp.com/api/v2/entry/farming_hoe/image",
+                    "name": "farming hoe"
+                }],
+                "materials": [
+                {
+                    "category": "materials",
+                    "common_locations": [
+                        "Gerudo Desert",
+                        "Tabantha Frontier"
+                    ],
+                    "cooking_effect": "cold resistance",
+                    "description": "This pepper is exploding with spice. Cook with it to create dishes that will raise your body temperature and help you withstand the cold.",
+                    "hearts_recovered": 0.5,
+                    "id": 170,
+                    "image": "https://botw-compendium.herokuapp.com/api/v2/entry/spicy_pepper/image",
+                    "name": "spicy pepper"
+                }],
+                "monsters": [
+                {
+                    "category": "monsters",
+                    "common_locations": [
+                        "Lanayru Great Spring",
+                        "East Necluda"
+                    ],
+                    "description": "The electricity that engulfs the bodies of these bat-like Keese makes them more dangerous than the standard type. They're capable of shocking anything they touch.",
+                    "drops": [
+                        "electric keese wing",
+                        "keese eyeball"
+                    ],
+                    "id": 91,
+                    "image": "https://botw-compendium.herokuapp.com/api/v2/entry/electric_keese/image",
+                    "name": "electric keese"
+                }],
+                "treasure": [
+                {
+                    "category": "treasure",
+                    "common_locations": [
+                        "Greater Hyrule"
+                    ],
+                    "description": "Fortunes untold (potentially) await the lucky adventurer who finds one of these. Chests can often be found within shrines or at enemy camps, but there may be some crafty folks who think they're safer underground.",
+                    "drops": [
+                        "treasures"
+                    ],
+                    "id": 386,
+                    "image": "https://botw-compendium.herokuapp.com/api/v2/entry/treasure_chest/image",
+                    "name": "treasure chest"
+                }]
+            
+            }
+        }
+    ]
+    
