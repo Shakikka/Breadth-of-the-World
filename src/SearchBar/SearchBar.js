@@ -36,9 +36,9 @@ class SearchBar extends Component {
                     value={this.state.searchTerm}
                     onChange={this.handleChange}
                 />
-                <button onClick={this.handleSubmit}>Search</button>
+                <button className='srch-btn' onClick={this.handleSubmit}>Search</button>
                 <Link to='/'>
-                    <button onClick={this.props.clearFoundItems}>Home</button>
+                    <button className='home-btn' onClick={this.props.clearFoundItems}>Home</button>
                 </Link>
             </form>
         )

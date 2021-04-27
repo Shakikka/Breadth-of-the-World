@@ -1,15 +1,16 @@
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import './Item.css'
 
 const Item = ({ id, category, common_locations, cooking_effect, description, hearts_recovered, image, name, drops, attack, defense, clearFoundItems, favoriteItem }) => {
  
     return (
-        <div>
+        <div className='items-container'>
             <Link to={`/${category}`}>
-                <button>Back</button>
+                <button className='back-btn'>Back</button>
             </Link>
             <Link to={`/`}>
-                <button onClick={clearFoundItems}>Home</button>
+                <button className='home-btn' onClick={clearFoundItems}>Home</button>
             </Link>
             <img src={image} alt=''/>
             <p>{name}</p>
@@ -20,7 +21,7 @@ const Item = ({ id, category, common_locations, cooking_effect, description, hea
             {drops && <p>Drops: {drops.join(', ')}</p>}
             {cooking_effect && <p>Cooking Effects: {cooking_effect}</p>}
             {hearts_recovered !== 0 && hearts_recovered && <p>Hearts Restored: {hearts_recovered}</p>}
-            <button id={id} onClick={(e) => favoriteItem(e, category)}>Favorite</button>
+            <button className='fav-btn' id={id} onClick={(e) => favoriteItem(e, category)}>Favorite</button>
         </div>
     )
 }
