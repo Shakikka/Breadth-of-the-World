@@ -6,7 +6,7 @@ const Item = ({ id, category, common_locations, cooking_effect, description, hea
     return (
         <div>
             <Link to={`/${category}`}>
-                <button>Back</button>
+                <button className='back-btn'>Back</button>
             </Link>
             <Link to={`/`}>
                 <button className='home-btn' onClick={clearFoundItems}>Home</button>
@@ -20,7 +20,7 @@ const Item = ({ id, category, common_locations, cooking_effect, description, hea
             {drops && <p>Drops: {drops.join(', ')}</p>}
             {cooking_effect && <p>Cooking Effects: {cooking_effect}</p>}
             {hearts_recovered !== 0 && hearts_recovered && <p>Hearts Restored: {hearts_recovered}</p>}
-            <button id={id} onClick={(e) => favoriteItem(e, category)}>Favorite</button>
+            <button className='fav-btn' id={id} onClick={(e) => favoriteItem(e, category)}>Favorite</button>
         </div>
     )
 }

@@ -15,7 +15,7 @@ const Favorites = ({ favorites, favoriteItem }) => {
                         <img src={image} alt='' />
                         <p>{name}</p>
                     </Link>
-                    <button id={id} onClick={(e) => favoriteItem(e, category)}>unfavorite</button>
+                    <button className='unfav-btn' id={id} onClick={(e) => favoriteItem(e, category)}>unfavorite</button>
                 </div>
             )
         })}

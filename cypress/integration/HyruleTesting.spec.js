@@ -1,8 +1,8 @@
-describe('Breadth of the World homepage functionality', () => {
+describe('Breadth of the World homepage button functionality', () => {
 
     beforeEach(() => {
         cy.fixture('get-items-data.json').then((itemInfo => {
-            cy.intercept('https://botw-compendium.herokuapp.com/api/v2', {creatures: itemInfo})
+            cy.intercept('https://botw-compendium.herokuapp.com/api/v2', itemInfo)
         }))
         cy.visit('http://localhost:3000')
     })
@@ -40,10 +40,10 @@ describe('Breadth of the World homepage functionality', () => {
     })
 })
 
-describe.only('Creature experience', () => {
+describe('Search with creatures experience', () => {
     beforeEach(() => {
         cy.fixture('get-items-data.json').then((itemInfo => {
-            cy.intercept('https://botw-compendium.herokuapp.com/api/v2', itemInfo[0])
+            cy.intercept('https://botw-compendium.herokuapp.com/api/v2', itemInfo)
         }))
         cy.visit('http://localhost:3000/creatures')
     })
@@ -63,13 +63,31 @@ describe.only('Creature experience', () => {
         cy.get('.home-btn').click()
         cy.url('eq', 'http://localhost:3000/')
     })
+
+    it('should be able to search by name', () => {
+        cy.get('.search').type('chubby').get('.srch-btn').click()
+        cy.get('p').should('not.contain', 'carp').should('contain', 'checker')
+    })
 })
 
-describe.only('Materials experience', () => {
+describe('Favorite materials experience', () => {
     beforeEach(() => {
         cy.fixture('get-items-data.json').then((itemInfo => {
-            cy.intercept('https://botw-compendium.herokuapp.com/api/v2', itemInfo[0])
+            cy.intercept('https://botw-compendium.herokuapp.com/api/v2', itemInfo)
         }))
-        cy.visit('http://localhost:3000/creatures')
+        cy.visit('http://localhost:3000/materials')
+    })
+
+    it('should have a material that can be favorited and unfavorited', () => {
+        cy.get('p').click()
+        cy.contains('Gerudo Desert, Tabantha Frontier')
+        cy.get('.fav-btn').click()
+        cy.get('.back-btn').click()
+        cy.contains('materials')
+        cy.get('.home-btn').click()
+        cy.get('.fv-btn').click()
+        cy.get('p').contains('spicy pepper')
+        cy.get('.unfav-btn').click()
+        cy.get('button').should('not.contain', '.unfav-btn')
     })
 })
