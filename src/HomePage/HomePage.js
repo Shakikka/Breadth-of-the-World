@@ -5,7 +5,8 @@ const HomePage = () => {
     
     return (
         <div>
-            <header>botw
+            <header>
+            <h1>Breadth of the World</h1>
             </header>
             <div>
                 <Link to={'/creatures'}>
@@ -22,6 +23,9 @@ const HomePage = () => {
                 </Link>
                 <Link to={'/treasure'}>
                     <button>Treasure</button>
+                </Link>
+                <Link to={'/favorites'}>
+                    <button>Favorites</button>
                 </Link>
             </div>
         </div>

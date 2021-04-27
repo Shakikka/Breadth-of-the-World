@@ -5,6 +5,7 @@ import HomePage from '../HomePage/HomePage';
 import Items from '../Items/Items';
 import Item from '../Item/Item';
 import SearchBar from '../SearchBar/SearchBar';
+import Favorites from '../Favorites/Favorites'
 import { getAllHyruleInfo } from '../apiCalls';
 
 class App extends Component {
@@ -47,35 +48,45 @@ class App extends Component {
   }
 
   findItems = (e, category) => {
-    const foundItems = this.state[category].filter(item => item.name.includes(e.target.value))
-    this.setState({ foundItems: foundItems })
+    const filteredItems = this.state[category].filter(item => item.name.includes(e.target.value))
+    this.setState({ foundItems: filteredItems })
   }
 
-  favoriteItem = (item) => {
-    this.setState({ favorites: [this.state.favorites, ...item]})
+  favoriteItem = (e, category) => {
+    const targetId = parseInt(e.target.id)
+    const searchFavorites = this.state.favorites.findIndex(favorite => favorite.id === targetId)
+    if (searchFavorites === -1) {
+      const foundItem = this.state[category].find(item => targetId === item.id)
+      this.setState({ favorites: [...this.state.favorites, foundItem]})
+    } else {
+      this.state.favorites.splice(searchFavorites, 1)
+      this.setState({ favorites: [...this.state.favorites]})
+    }
   }
 
-  clearFoundItems = () => this.setState({ foundItems: '' })
+  clearFoundItems = () => this.setState({ foundItems: [] })
 
   render() {
     return (
       <div className="App">
         <Switch>
           <Route exact path='/' render={() => <HomePage/>}/>
+          <Route exact path='/favorites' render={() => <Favorites favorites={this.state.favorites} favoriteItem={this.favoriteItem}/>}/>
           <Route exact path='/:category' render={({ match }) => {
             const { category } = match.params;
             return (
               <div>
+                <h2>{category}</h2>
                 <SearchBar findItems={this.findItems} clearFoundItems={this.clearFoundItems} data={this.listItems(category)}
                  findItem={this.findItem} category={category}/>
-                <Items data={this.listItems(category)} foundItems={this.state.foundItems}/>
+                <Items data={this.listItems(category)} foundItems={this.state.foundItems} favoriteItem={this.favoriteItem}/>
               </div>
             )}
           } />
           <Route exact path='/:category/:id' render={({ match }) => {
             const { id, category} = match.params;
             const showItemDetails = this.listItems(category).find(item => item.id === parseInt(id))
-            return <Item clearFoundItems={this.clearFoundItems} {...showItemDetails}/>}}
+            return <Item favoriteItem={this.favoriteItem} clearFoundItems={this.clearFoundItems} {...showItemDetails}/>}}
           />
           <Route render={() => {
               <Link to='/'>
